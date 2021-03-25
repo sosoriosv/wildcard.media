@@ -54,7 +54,8 @@ class BaseSubProcess(object):
         process = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE,
                                    close_fds=self.close_fds)
-        output, error = process.communicate()
+        error, output1 = process.communicate()
+        output = output1.decode("utf-8")
         process.stdout.close()
         process.stderr.close()
         if process.returncode != 0:
