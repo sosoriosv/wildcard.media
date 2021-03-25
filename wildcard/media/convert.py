@@ -54,8 +54,8 @@ class BaseSubProcess(object):
         process = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE,
                                    close_fds=self.close_fds)
-        error, output1 = process.communicate()
-        output = output1.decode("utf-8")
+        error, output1 = process.communicate() # i test it in debian buster
+        output = output1.decode("utf-8") # converting to string
         process.stdout.close()
         process.stderr.close()
         if process.returncode != 0:
